@@ -105,8 +105,8 @@ function StepServiceBarber({ selected, onSelect }) {
 function StepDateTime({ selected, onSelect }) {
   const weekSlots = useMemo(() => generateWeekSlots(), []);
   const [selectedDay, setSelectedDay] = useState(() => {
-    const today = weekSlots.find((d) => d.isToday);
-    return today ? today.dateKey : weekSlots[0].dateKey;
+    const firstAvailable = weekSlots.find((d) => !d.isPast);
+    return firstAvailable ? firstAvailable.dateKey : weekSlots[0].dateKey;
   });
 
   const activeDay = weekSlots.find((d) => d.dateKey === selectedDay) || weekSlots[0];
