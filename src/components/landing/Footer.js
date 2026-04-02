@@ -1,9 +1,12 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Stack, IconButton } from '@mui/material';
+import { Box, Container, Typography, Grid, Stack, IconButton, Link } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PhoneIcon from '@mui/icons-material/Phone';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function Footer() {
   return (
@@ -124,9 +127,27 @@ export default function Footer() {
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
             &copy; {new Date().getFullYear()} Iron & Oak Barbershop. All rights reserved.
           </Typography>
-          <Typography variant="caption" sx={{ color: 'text.secondary', opacity: 0.6 }}>
-            This is a fictional business for portfolio demonstration.
-          </Typography>
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Typography variant="caption" sx={{ color: 'text.secondary', opacity: 0.6 }}>
+              This is a fictional business for portfolio demonstration.
+            </Typography>
+            <Link
+              href={`${basePath}/admin`}
+              underline="hover"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.5,
+                color: 'text.secondary',
+                opacity: 0.6,
+                fontSize: '0.75rem',
+                '&:hover': { opacity: 1, color: 'primary.main' },
+              }}
+            >
+              <AdminPanelSettingsIcon sx={{ fontSize: 14 }} />
+              Admin Demo
+            </Link>
+          </Stack>
         </Box>
       </Container>
     </Box>
