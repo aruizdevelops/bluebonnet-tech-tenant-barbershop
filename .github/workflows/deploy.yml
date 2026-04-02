@@ -27,6 +27,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ github.repository_owner }}/bluebonnet-tech-core
+          ref: main
           path: bluebonnet-tech-core
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -44,6 +45,8 @@ jobs:
       - name: Build
         working-directory: bluebonnet-tech-tenant-barbershop
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /bluebonnet-tech-tenant-barbershop
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
